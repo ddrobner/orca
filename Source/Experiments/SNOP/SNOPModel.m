@@ -76,6 +76,9 @@ NSString* ORSNOPModelNhitMonitorChangedNotification = @"ORSNOPModelNhitMonitorCh
 NSString* ORSNOPStillWaitingForBuffersNotification = @"ORSNOPStillWaitingForBuffersNotification";
 NSString* ORSNOPNotWaitingForBuffersNotification = @"ORSNOPNotWaitingForBuffersNotification";
 NSString* ORRoutineChangedNotification = @"ORRoutineChangedNotification";
+NSString* ORROBOStartRunNotification = @"ORSNOPStartRun";
+NSString* ORROBOResyncRunNotification = @"ORSNOPResyncRun";
+NSString* ORROBOStopRunNotification = @"ORSNOPStopRun";
 
 BOOL isNotRunningOrIsInMaintenance()
 {
@@ -2612,6 +2615,27 @@ static NSComparisonResult compareXL3s(ORXL3Model *xl3_1, ORXL3Model *xl3_2, void
     }
 
     return YES;
+}
+
+- (void) roboStartRun
+{
+    //NSLog(@"Robo start model");
+    [[NSNotificationCenter defaultCenter] postNotificationName:ORROBOStartRunNotification object:self];
+    
+}
+
+- (void) roboResyncRun
+{
+    //NSLog(@"Robo resync model");
+    [[NSNotificationCenter defaultCenter] postNotificationName:ORROBOResyncRunNotification object:self];
+    
+}
+
+- (void) roboStopRun
+{
+    //NSLog(@"Robo stop model");
+    [[NSNotificationCenter defaultCenter] postNotificationName:ORROBOStopRunNotification object:self];
+    
 }
 
 - (void) stopRun

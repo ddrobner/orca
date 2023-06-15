@@ -189,6 +189,10 @@ BOOL isNotRunningOrIsInMaintenance(void);
 @property (setter=setLogServerPort:) int logPort;
 @property (nonatomic,assign) bool resync;
 
+- (void)roboStartRun;
+- (void)roboResyncRun;
+- (void)roboStopRun;
+
 - (id) init;
 - (void) awakeAfterDocumentLoaded;
 
@@ -366,3 +370,6 @@ extern NSString* ORSNOPModelNhitMonitorChangedNotification;
 extern NSString* ORSNOPStillWaitingForBuffersNotification;
 extern NSString* ORSNOPNotWaitingForBuffersNotification;
 extern NSString* ORRoutineChangedNotification;
+extern NSString* ORROBOStartRunNotification;
+extern NSString* ORROBOResyncRunNotification;
+extern NSString* ORROBOStopRunNotification;
