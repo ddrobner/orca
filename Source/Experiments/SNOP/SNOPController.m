@@ -602,6 +602,20 @@ snopGreenColor;
                      selector : @selector(notWaitingForBuffers:)
                          name : ORSNOPNotWaitingForBuffersNotification
                         object: nil];
+    
+    [notifyCenter addObserver : self
+                         selector : @selector(startRunAction:)
+                             name : ORROBOStartRunNotification
+                            object: nil];
+    
+    [notifyCenter addObserver : self
+                         selector : @selector(resyncRunAction:)
+                             name : ORROBOResyncRunNotification
+                            object: nil];
+    [notifyCenter addObserver : self
+                         selector : @selector(stopRunAction:)
+                             name : ORROBOStopRunNotification
+                            object: nil];
 }
 
 - (void) updateWindow
@@ -765,6 +779,8 @@ snopGreenColor;
 
 - (IBAction) startRunAction:(id)sender
 {
+    NSLog(@"Inside the Start Run Action");
+    
     [self endEditing];
 
     /* Action when the user clicks on the Start or Restart Button. */
@@ -801,6 +817,8 @@ snopGreenColor;
      * stop run and then start run. Doing this resets the GTID, which resyncs
      * crate 9 after it goes out of sync :). */
 
+    NSLog(@"Inside the Resync Run Action");
+    
     [model setResync:YES];
 
     [self startRunAction:nil];
@@ -808,6 +826,7 @@ snopGreenColor;
 
 - (IBAction) stopRunAction:(id)sender
 {
+    NSLog(@"Inside the Stop Run Action");
     [self endEditing];
     [model stopRun];
 }

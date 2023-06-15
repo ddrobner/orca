@@ -23,6 +23,7 @@
 #import "RunStatusIcon.h"
 #include <stdint.h>
 #import <WebKit/WebKit.h>
+#import "SNOPModel.h"
 
 @class ORColorScale;
 @class ORSegmentGroup;
