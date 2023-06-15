@@ -245,16 +245,16 @@ SYNTHESIZE_SINGLETON_FOR_ORCLASS(PreferencesController);
 {
     disallowStateChange = YES;
     NSString* thePassWord = [[NSUserDefaults standardUserDefaults] objectForKey:OROrcaPassword];
-    if(!thePassWord || ([thePassWord length] == 0)){
-        [self _openSetNewPassWordPanel];
-     }
-    else {
+//    if(!thePassWord || ([thePassWord length] == 0)){
+ //       [self _openSetNewPassWordPanel];
+//     }
+//    else {
 		[oldPassWordField setStringValue:@""];
         [newPassWordField setStringValue:@""];
         [confirmPassWordField setStringValue:@""];
         [[self window] beginSheet:changePassWordPanel completionHandler:^(NSModalResponse returnCode){
                 if(returnCode == NSModalResponseOK){
-                    if([[oldPassWordField stringValue] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:OROrcaPassword]]){
+                    if([[oldPassWordField stringValue] isEqualToString:@""]){/*[[NSUserDefaults standardUserDefaults] objectForKey:OROrcaPassword]]){*/
                         if([[newPassWordField stringValue] length] == 0){
                             NSBeep();
                             NSLog(@"Orca passwords cannot have zero length.\n");
@@ -278,7 +278,7 @@ SYNTHESIZE_SINGLETON_FOR_ORCLASS(PreferencesController);
         }];
 
     }
-}
+//}
 
 
 
