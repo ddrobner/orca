@@ -616,6 +616,11 @@ snopGreenColor;
                          selector : @selector(stopRunAction:)
                              name : ORROBOStopRunNotification
                             object: nil];
+    
+    [notifyCenter addObserver: self
+                     selector: @selector(loadStandardRun:withVersion:)
+                         name: @"roboSetStandardRun"
+                       object: nil];
 }
 
 - (void) updateWindow

@@ -192,6 +192,7 @@ BOOL isNotRunningOrIsInMaintenance(void);
 - (void)roboStartRun;
 - (void)roboResyncRun;
 - (void)roboStopRun;
+- (void)roboSetStandardRunType;
 
 - (id) init;
 - (void) awakeAfterDocumentLoaded;
