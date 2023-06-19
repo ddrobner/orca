@@ -1,3 +1,8 @@
+My fork of orca for getting Roboshifter up and running. This fork isn't meant to be deployed to production (see Anita's for that). This fork is simply to store changes I've needed to make in order to get Orca running on my machine, and hopefully others who want to work on roboshifter in case I lose the data.
+
+The instructions below are quite old, however I will not touch them.
+
+To run this fork, clone the repository (`git clone https://github.com/ddrobner/orca`) and open the Xcode project. Hopefully, it should just build for you without problems since it currently is working on macOS 12.6.
 
 You must install any needed drivers before hardware accesses will work. Find what you need in the drivers folder. 
 
