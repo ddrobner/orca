@@ -2643,8 +2643,12 @@ static NSComparisonResult compareXL3s(ORXL3Model *xl3_1, ORXL3Model *xl3_2, void
 {
     //NSLog(@"Set Standard Run Type Action");
     [self loadStandardRun:name withVersion:version];
+    [self setStandardRunType:name];
+    [self setStandardRunVersion:version];
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"roboSetStandardRun" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ORSNOPModelSRChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ORSNOPModelSRVersionChangedNotification object:nil];
 }
 
 - (void) stopRun
