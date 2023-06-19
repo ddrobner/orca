@@ -1780,6 +1780,27 @@ static NSComparisonResult compareXL3s(ORXL3Model *xl3_1, ORXL3Model *xl3_2, void
     }
 }
 
+- (void)roboRampDownCrate:(int)crateid
+{
+    NSArray* xl3s = [[(ORAppDelegate*)[NSApp delegate] document] collectObjectsOfClass:NSClassFromString(@"ORXL3Model")];
+    
+    //Handle crates 16B, 17 and 18
+    NSString *HVBlabel = @"";
+    if(crateid > 16){
+        if(crateid == 17) HVBlabel = @"B";
+        crateid--;
+    }
+    for (id xl3 in xl3s) {
+        if ([xl3 crateNumber] != crateid) continue;
+        if ([xl3 isTriggerON]) {
+            [xl3 hvTriggersOFF];
+        }
+        if([HVBlabel isEqualToString:@"B"]) [xl3 setHvBNextStepValue:0];
+        else [xl3 setHvANextStepValue:0];
+        return;
+    }
+}
+
 - (void) runNhitMonitor
 {
     [nhitMonitor start:[self nhitMonitorCrate]
