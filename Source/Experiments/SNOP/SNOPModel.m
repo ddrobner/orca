@@ -2638,6 +2638,15 @@ static NSComparisonResult compareXL3s(ORXL3Model *xl3_1, ORXL3Model *xl3_2, void
     
 }
 
+- (void) roboSetStandardRunType:(NSString*)name
+                        version:(NSString*)version
+{
+    //NSLog(@"Set Standard Run Type Action");
+    [self loadStandardRun:name withVersion:version];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"roboSetStandardRun" object:self];
+}
+
 - (void) stopRun
 {
     ORRunModel *aRunModel = nil;
@@ -2693,6 +2702,9 @@ static NSComparisonResult compareXL3s(ORXL3Model *xl3_1, ORXL3Model *xl3_2, void
     }
     ret = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     NSDictionary *theStandardRuns = [NSJSONSerialization JSONObjectWithData:[ret dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+
+    //NSLogColor([NSColor purpleColor], @"Standard Run Keys: \n %@", [theStandardRuns allKeys]);
+    //NSLogColor([NSColor greenColor], @"Standard Run Values: \n %@", [theStandardRuns allValues]);
     // JSON formatting error
     if (error != nil) {
         NSLogColor([NSColor redColor], @"Error reading standard runs from "
@@ -2760,6 +2772,7 @@ err:
 // Load Detector Settings from the DB into the Models
 - (BOOL) loadStandardRun:(NSString*)runTypeName withVersion:(NSString*)runVersion
 {
+    //NSLog(@"Setting Standard Run");
     NSMutableDictionary *runSettings = [[[self standardRunCollection] objectForKey:runTypeName] objectForKey:runVersion];
     if (runSettings == nil) {
         NSLogColor([NSColor redColor], @"Standard run %@(%@) does NOT exists in DB.\n",runTypeName, runVersion);
