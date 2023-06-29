@@ -749,7 +749,6 @@ snopGreenColor;
 
 -(void) SRTypeChanged:(NSNotification*)aNote
 {
-    NSLog(@"SR Type Changed Notification");
     NSString* standardRun = [model standardRunType];
     NSLog(standardRun);
     [standardRunPopupMenu selectItemWithObjectValue:standardRun];
@@ -760,7 +759,6 @@ snopGreenColor;
         NSLogColor([NSColor redColor],@"Standard Run \"%@\" does not exist. \n", standardRun);
     }
     else{
-        NSLog(@"Selecting Standard Run Dropdown");
         [standardRunPopupMenu selectItemWithObjectValue:standardRun];
         [self refreshStandardRunVersions];
     }
