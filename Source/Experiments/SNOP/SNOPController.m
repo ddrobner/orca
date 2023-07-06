@@ -750,7 +750,7 @@ snopGreenColor;
 -(void) SRTypeChanged:(NSNotification*)aNote
 {
     NSString* standardRun = [model standardRunType];
-    NSLog(standardRun);
+    //NSLog(standardRun);
     [standardRunPopupMenu selectItemWithObjectValue:standardRun];
     if([standardRunPopupMenu numberOfItems] == 0 || standardRun == nil || [standardRun isEqualToString:@""]){
         //Nothing
